@@ -1,0 +1,91 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Roboto:wght@300&display=swap');
+
+body {
+    background-color: #e9e5df;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    height: 100%;
+    width: 70%;
+    box-sizing: border-box;
+}
+
+/*Sessão de busca*/
+.sectionSearch {
+    height: 45%;
+    box-sizing: border-box;
+    padding: 1em 0 0;
+}
+.titleSearch{
+    margin-bottom: 0.5em;
+    font-size: 1.35em;
+    font-weight: bold;
+}
+.divSearch{
+    margin-bottom: 1em;
+}
+.divSearch input{
+    border:1px solid #ccc;
+    padding:0.7em;
+    width: 100%;
+    border-radius: 0.25em;
+    box-shadow: 0 0 0.5em 0 #ccc;
+}
+
+.divItemsSearch {
+    height: 75%;
+    background-color: white;
+    box-shadow: 0 0 0.5em 0 #ccc;
+    border-radius: 0.25em;
+}
+.divItemsSearch ul {
+    width: 100%;
+    height: 100%;
+    padding:1em;
+    box-sizing: border-box;
+}
+.divItemsSearch ul li{
+    height:20%;
+    width:100%;
+    margin-bottom:1em;
+   
+}
+ul li .buttonList{
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 0.5em;
+    box-shadow: 0 0 0.4em 0 #ccc;
+    border-radius: 0.25em;
+}
+.imgList{
+    height: 100%;
+    object-fit: cover;
+    margin-right: 1em;
+    width: auto;
+}
+.divInfoProduct h2{
+    font-weight: bold;
+    font-size: 1.25em;
+}
+.divInfoProduct p{
+    font-size: 0.8em;
+}
+/*Sessão de Bag*/
+.sectionBagList {
+    height: 60%;
+    box-sizing: border-box;
+    padding: 1em 0 0;
+}
+
+.divList {
+    height: 75%;
+}

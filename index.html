@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,28 +9,42 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <main>
-        <section>
-            <div>
+        <section class="sectionSearch">
+            <h1>Adicione seus produtos</h1>
+            <div class="divSearch">
                 <input type="search" placeholder="Busque aqui seu produto">
             </div>
-            <div>
+            <div class="divItemsSearch">
+                <ul>
+                    <li>
+                        <button class="buttonList">
+                            <img class="imgList" src="assets/computador pichau gamer.jpg" alt="imagem do produto">
+                            <div class="divInfoProduct">
+                                <h2>Pc Gamer</h2>
+                                <p>Valor : R$1200,00</p>
+                            </div>
+                            
+                        </button>
 
+                    </li>
+                </ul>
             </div>
         </section>
-        <section>
-            <h1>Sua bag de produtos</h1>
-            <div>
+        <section class="sectionBagList">
+            <h1 class="titleList">Sua bag de produtos</h1>
+            <div class="divList">
 
             </div>
-            <div>
-                <div>
+            <div class="divResult">
+                <span>
                     Total
-                </div>
-                <div>
-                    R$
-                </div>
+                </span>
+                <output class="output">
+                    R$1200,00
+                </output>
             </div>
             <button>Limpar Bag</button>
         </section>
@@ -37,4 +52,5 @@
     <script src="js/produtos.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
