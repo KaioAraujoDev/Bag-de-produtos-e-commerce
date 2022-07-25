@@ -1,17 +1,21 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Roboto:wght@300&display=swap');
 
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+}
+
 body {
-    background-color: #e9e5df;
+    background-color: #e6f2ff;
     display: flex;
     justify-content: center;
     height: 100vh;
-    font-family: 'Open Sans', sans-serif;
+
 }
 
 main {
     height: 100%;
-    width: 70%;
+    width: 65%;
     box-sizing: border-box;
 }
 
@@ -20,18 +24,32 @@ main {
     height: 45%;
     box-sizing: border-box;
     padding: 1em 0 0;
+    margin-bottom: 2em;
 }
-.titleSearch{
+
+/*Declarações de estilo genérico*/
+
+.title {
     margin-bottom: 0.5em;
     font-size: 1.35em;
-    font-weight: bold;
+    font-weight: 500;
 }
-.divSearch{
+
+.divItems {
+    background-color: white;
+    box-shadow: 0 0 0.5em 0 #ccc;
+    border-radius: 0.25em;
+    overflow: overlay;
+}
+
+/*Div de Buscas*/
+.divSearch {
     margin-bottom: 1em;
 }
-.divSearch input{
-    border:1px solid #ccc;
-    padding:0.7em;
+
+.divSearch input {
+    border: 1px solid #ccc;
+    padding: 0.7em;
     width: 100%;
     border-radius: 0.25em;
     box-shadow: 0 0 0.5em 0 #ccc;
@@ -39,46 +57,62 @@ main {
 
 .divItemsSearch {
     height: 75%;
-    background-color: white;
-    box-shadow: 0 0 0.5em 0 #ccc;
-    border-radius: 0.25em;
 }
-.divItemsSearch ul {
+
+/*Divisão de listas */
+
+.divItems .list {
     width: 100%;
     height: 100%;
-    padding:1em;
+    padding: 1em;
     box-sizing: border-box;
 }
-.divItemsSearch ul li{
-    height:20%;
-    width:100%;
-    margin-bottom:1em;
-   
+
+.divItems ul .itemList {
+    height: 2.5em;
+    width: 100%;
+    margin-bottom: 1em;
 }
-ul li .buttonList{
+
+
+ul li .buttonList {
     background: none;
     border: none;
     display: flex;
     align-items: center;
     height: 100%;
     width: 100%;
-    padding: 0.5em;
-    box-shadow: 0 0 0.4em 0 #ccc;
+    box-shadow: 0 0 0.2em 0 #ccc;
     border-radius: 0.25em;
 }
-.imgList{
-    height: 100%;
+
+ul li .buttonList:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.img {
     object-fit: cover;
-    margin-right: 1em;
+    margin-right: 1rem;
     width: auto;
+    height: 100%
 }
-.divInfoProduct h2{
+
+.divInfoProduct {
+    text-align: start;
+}
+
+/*Estilizando texto das listas*/
+
+.divInfoProduct .titleProduct {
     font-weight: bold;
-    font-size: 1.25em;
+    font-size: 0.8rem;
 }
-.divInfoProduct p{
-    font-size: 0.8em;
+
+.divInfoProduct .description {
+    font-size: 0.55rem;
 }
+
 /*Sessão de Bag*/
 .sectionBagList {
     height: 60%;
@@ -86,6 +120,88 @@ ul li .buttonList{
     padding: 1em 0 0;
 }
 
-.divList {
-    height: 75%;
+.divItemsBag {
+    height: 50%;
+    margin-bottom: 2.5em;
+}
+
+.itemListBag {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 0 0.7em;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+.btnRemove {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.btnRemove:hover {
+    color: darkturquoise;
+    cursor: pointer;
+}
+
+.divQuantidade {
+    display: flex;
+    flex-direction: column;
+
+    width: 15%;
+    position: absolute;
+    right: 0;
+
+}
+
+.inputQuantidade {
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+.inputQuantidade:focus {
+    border: 1px solid black;
+}
+
+.buttonQuantidade {
+    background: none;
+    border: none;
+}
+
+.buttonQuantidade:hover {
+    cursor: pointer;
+}
+
+.imgIcon {
+    height: 10%;
+    width: auto;
+    object-fit: cover;
+}
+
+.divResult {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid black;
+    padding: 1em 0 1em 0;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+}
+
+.buttonClear {
+    width: 100%;
+    border: 1px solid #0000ff;
+    background: none;
+    color: #0000ff;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding:0.5em;
+    border-radius: 0.15em;
+}
+.buttonClear:hover{
+    cursor: pointer;
+    font-weight: bold;
 }

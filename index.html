@@ -13,30 +13,48 @@
 <body>
     <main>
         <section class="sectionSearch">
-            <h1 class="titleSearch">Adicione seus produtos</h1>
+            <h1 class="title">Adicione seus produtos</h1>
             <div class="divSearch">
                 <input type="search" placeholder="Busque aqui seu produto">
             </div>
-            <div class="divItemsSearch">
-                <ul>
-                    <li>
+            <div class="divItems divItemsSearch">
+                <ul class="list">
+                    <li class="itemList itemListSearch">
                         <button class="buttonList">
-                            <img class="imgList" src="assets/computador pichau gamer.jpg" alt="imagem do produto">
+                            <img class="img" src="assets/computador pichau gamer.jpg" alt="imagem do produto">
                             <div class="divInfoProduct">
-                                <h2>Pc Gamer</h2>
-                                <p>Valor : R$1200,00</p>
+                                <h2 class="titleProduct">Pc Gamer</h2>
+                                <p class="description">Valor : R$1200,00</p>
                             </div>
                             
                         </button>
-
                     </li>
                 </ul>
             </div>
         </section>
         <section class="sectionBagList">
-            <h1 class="titleList">Sua bag de produtos</h1>
-            <div class="divList">
-
+            <h1 class="title">Bag de produtos</h1>
+            <div class="divItems divItemsBag">
+                <ul class="list">
+                    <li class="itemList itemListBag">
+                        <img class="img" src="assets/computador pichau gamer.jpg" alt="imagem produto selecionado">
+                        <div class="divInfoProduct">
+                            <h2 class="titleProduct">Pc Gamer</h2>
+                            <p class="description">Valor : R$1200,00</p>
+                            <button class="btnRemove description">Remover</button>
+                        </div>
+                        <div class="divQuantidade">
+                            <button class="buttonQuantidade">
+                                <img class="imgIcon" src="assets/chevron-up.svg" alt="Aumentar quantidade">
+                            </button>
+                            <input class="inputQuantidade" type="text" value="1">
+                            <button class="buttonQuantidade">
+                                <img class="imgIcon"  src="assets/chevron-down.svg" alt="Reduzir quantidade">
+                            </button>
+                        </div>
+                    </li>
+                    
+                </ul>
             </div>
             <div class="divResult">
                 <span>
@@ -46,8 +64,9 @@
                     R$1200,00
                 </output>
             </div>
-            <button>Limpar Bag</button>
+            <button class="buttonClear">Limpar Bag</button>
         </section>
+        
     </main>
     <script src="js/produtos.js"></script>
     <script src="js/main.js"></script>
