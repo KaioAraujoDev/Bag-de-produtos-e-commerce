@@ -16,12 +16,11 @@ body {
 main {
     height: 100%;
     width: 65%;
-    box-sizing: border-box;
 }
 
 /*Sessão de busca*/
 .sectionSearch {
-    height: 45%;
+    height: 45vh;
     box-sizing: border-box;
     padding: 1em 0 0;
     margin-bottom: 2em;
@@ -115,7 +114,7 @@ ul li .buttonList:hover {
 
 /*Sessão de Bag*/
 .sectionBagList {
-    height: 60%;
+    height: 45vh;
     box-sizing: border-box;
     padding: 1em 0 0;
 }
