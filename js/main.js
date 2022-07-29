@@ -44,6 +44,9 @@ function addItensBag(id) {
         
         //Adicionando evento de remover item da bag
         RemoveItem();
+        verificaQuantidades();
+        modifyQuantity();
+        calcularTotal();
     }
   
 }
@@ -75,11 +78,11 @@ function exibirBag(itemsBag) {
                     <button class="btnRemove description" data-remove>Remover</button>
                 </div>
                 <div class="divQuantidade">
-                    <button class="buttonQuantidade">
+                    <button class="buttonQuantidade" data-adicionar-quantidade id="${element.id}">
                         <img class="imgIcon" src="assets/chevron-up.svg" alt="Aumentar quantidade">
                     </button>
                     <input class="inputQuantidade" data-quantidade id="${element.id}" type="text" value="1">
-                    <button class="buttonQuantidade">
+                    <button class="buttonQuantidade" data-reduzir-quantidade id="${element.id}">
                         <img class="imgIcon"  src="assets/chevron-down.svg" alt="Reduzir quantidade">
                     </button>
                 </div>
@@ -98,6 +101,7 @@ buttonRemoveAll.addEventListener('click', RemoveAllItems);
 function RemoveAllItems() {
     FieldList.innerHTML = '';
     itemsBag = [];
+    calcularTotal();
 }
 
 //Removendo item bag 
@@ -118,6 +122,7 @@ function RemoveItem() {
             }
             
             exibirBag(itemsBag);
+            calcularTotal();
         });
     })
 
@@ -151,11 +156,63 @@ function searchItems(valorDigitado) {
 }
 
 //Calculando valor total 
+ let valores = [];
+ function verificaQuantidades(){
+     const inputsQuantidade = document.querySelectorAll("[data-quantidade]")
+     
+     //Adicionar quantidade ao seu respectivo id 
+     inputsQuantidade.forEach(element => {
+          for (let c = 0; c < itemsBag.length; c++) {
+            if(parseInt(element.id) === itemsBag[c].id){
+                 itemsBag[c].quantidade = parseInt(element.value);
+            }
+          }
+     })
 
-// function verificaQuantidades(){
-//     const inputQuantidade = querySelectorAll('[data-quantidade]')
-//     inputQuantidade.forEach((element) => {
-//         element.addEventListener('click',)
-//     }
+     
+ }
+
+//Eventos de manipulação de quantidade do item
+function modifyQuantity(){
+    const inputsQuantidade = document.querySelectorAll("[data-quantidade]")
+    const buttonsAdicionar = document.querySelectorAll("[data-adicionar-quantidade]");
+    const buttonsRemover = document.querySelectorAll("[data-reduzir-quantidade]");
     
-// }
+    buttonsAdicionar.forEach(element =>{
+        element.addEventListener("click", () => {
+            inputsQuantidade.forEach(elementInput =>{
+                    if(elementInput.id == element.id){
+                        ++ elementInput.value; 
+                        verificaQuantidades();
+                        calcularTotal();
+                    }
+
+            })
+        })
+    });
+    buttonsRemover.forEach(element =>{
+        element.addEventListener("click", () => {
+            inputsQuantidade.forEach(elementInput =>{
+                if(elementInput.id == element.id && elementInput.value > 1){
+                    -- elementInput.value; 
+                    verificaQuantidades();
+                    calcularTotal();
+                }
+
+            })
+        })
+    })
+
+}
+//Calcular resultado de saida
+function calcularTotal(){
+    const output = document.querySelector('#output');
+    let valorTotal = 0;
+
+    if(itemsBag.length > 0){
+        itemsBag.forEach(element =>{
+            valorTotal += parseFloat(element.quantidade) * parseFloat(element.preco);
+        })
+    }
+    output.innerText = `R$${valorTotal}`;
+}
