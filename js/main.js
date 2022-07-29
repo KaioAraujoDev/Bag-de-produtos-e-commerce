@@ -15,8 +15,6 @@ function listarSearch(array) {
             </button>
             </li>
          `;
-
-
     })
 }
 
@@ -37,36 +35,47 @@ function adicionandoEventButton() {
 
 //Adicionando items a bag
 let itemsBag = [];
+
 function addItensBag(id) {
-    if(validarBag(id) === false || itemsBag.length === 0){
-        itemsBag.push(arrayProdutos[id]);
+    if (validarBag(id) === false || itemsBag.length === 0) {
+        // Definindo propriedades padrões
+        itemsBag.push({
+            id: arrayProdutos[id].id,
+            nome: arrayProdutos[id].nome,
+            preco: arrayProdutos[id].preco,
+            image: arrayProdutos[id].image,
+        });
+
+        //Definindo quantidade padrão
+        itemsBag[itemsBag.length - 1].quantidade === undefined ? itemsBag[itemsBag.length - 1].quantidade = 1 : false;
+
+
         exibirBag(itemsBag);
-        
+
         //Adicionando evento de remover item da bag
         RemoveItem();
-        verificaQuantidades();
         modifyQuantity();
         calcularTotal();
     }
-  
+
 }
 
 //Função para verificar se algum item selecionado ja está na lista.
-function validarBag(idclicado){
-    for(let c = 0 ; c < itemsBag.length ; c++)
-       if(itemsBag[c].id == idclicado){
-        return true;
-       }else{
-        if(c === itemsBag.length - 1){
-            return false;
+function validarBag(idclicado) {
+    for (let c = 0; c < itemsBag.length; c++)
+        if (itemsBag[c].id == idclicado) {
+            alert('Este produto já foi selecionado');
+            return true;
+        } else {
+            if (c === itemsBag.length - 1) {
+                return false;
+            }
         }
-       }
 }
 
 const FieldList = document.querySelector('#listBag');
 function exibirBag(itemsBag) {
-    // validarBag(elementClicado);
-   
+
     FieldList.innerHTML = '';
     itemsBag.forEach(element => {
         FieldList.innerHTML += `
@@ -81,7 +90,7 @@ function exibirBag(itemsBag) {
                     <button class="buttonQuantidade" data-adicionar-quantidade id="${element.id}">
                         <img class="imgIcon" src="assets/chevron-up.svg" alt="Aumentar quantidade">
                     </button>
-                    <input class="inputQuantidade" data-quantidade id="${element.id}" type="text" value="1">
+                    <input class="inputQuantidade" data-quantidade id="${element.id}" type="text" value="${element.quantidade}">
                     <button class="buttonQuantidade" data-reduzir-quantidade id="${element.id}">
                         <img class="imgIcon"  src="assets/chevron-down.svg" alt="Reduzir quantidade">
                     </button>
@@ -89,9 +98,9 @@ function exibirBag(itemsBag) {
         </li>
         `
     })
-    
-     //Adicionando evento de remover item da bag
-     RemoveItem();
+
+    //Adicionando evento de remover item da bag
+    RemoveItem();
 }
 
 //Removendo todos os items da bag 
@@ -108,19 +117,19 @@ function RemoveAllItems() {
 
 
 function RemoveItem() {
-    
+
     const buttonsRemove = document.querySelectorAll("[data-remove]");
     buttonsRemove.forEach(element => {
 
         element.addEventListener('click', (event) => {
-            
-            const itemRemoved  = event.target.parentNode.parentNode.id;
 
-            for(let c=0;c < itemsBag.length;c++) {
-                itemsBag[c].id == itemRemoved ? itemsBag.splice(c, 1) : false ;
-               
+            const itemRemoved = event.target.parentNode.parentNode.id;
+
+            for (let c = 0; c < itemsBag.length; c++) {
+                itemsBag[c].id == itemRemoved ? itemsBag.splice(c, 1) : false;
+
             }
-            
+
             exibirBag(itemsBag);
             calcularTotal();
         });
@@ -155,47 +164,40 @@ function searchItems(valorDigitado) {
     })
 }
 
-//Calculando valor total 
- let valores = [];
- function verificaQuantidades(){
-     const inputsQuantidade = document.querySelectorAll("[data-quantidade]")
-     
-     //Adicionar quantidade ao seu respectivo id 
-     inputsQuantidade.forEach(element => {
-          for (let c = 0; c < itemsBag.length; c++) {
-            if(parseInt(element.id) === itemsBag[c].id){
-                 itemsBag[c].quantidade = parseInt(element.value);
-            }
-          }
-     })
-
-     
- }
-
 //Eventos de manipulação de quantidade do item
-function modifyQuantity(){
+function modifyQuantity() {
     const inputsQuantidade = document.querySelectorAll("[data-quantidade]")
     const buttonsAdicionar = document.querySelectorAll("[data-adicionar-quantidade]");
     const buttonsRemover = document.querySelectorAll("[data-reduzir-quantidade]");
-    
-    buttonsAdicionar.forEach(element =>{
+
+    buttonsAdicionar.forEach(element => {
         element.addEventListener("click", () => {
-            inputsQuantidade.forEach(elementInput =>{
-                    if(elementInput.id == element.id){
-                        ++ elementInput.value; 
-                        verificaQuantidades();
-                        calcularTotal();
+            inputsQuantidade.forEach(elementInput => {
+                if (elementInput.id == element.id) {
+                    for (let c = 0; c < itemsBag.length; c++) {
+                        if (itemsBag[c].id == elementInput.id) {
+                            ++itemsBag[c].quantidade;
+                            elementInput.value = itemsBag[c].quantidade;
+                        }
                     }
+
+                    calcularTotal();
+                }
 
             })
         })
     });
-    buttonsRemover.forEach(element =>{
+    buttonsRemover.forEach(element => {
         element.addEventListener("click", () => {
-            inputsQuantidade.forEach(elementInput =>{
-                if(elementInput.id == element.id && elementInput.value > 1){
-                    -- elementInput.value; 
-                    verificaQuantidades();
+            inputsQuantidade.forEach(elementInput => {
+                if (elementInput.id == element.id && elementInput.value > 1) {
+                    for (let c = 0; c < itemsBag.length; c++) {
+                        if (itemsBag[c].id == elementInput.id) {
+                            --itemsBag[c].quantidade;
+                            elementInput.value = itemsBag[c].quantidade;
+                        }
+                    }
+
                     calcularTotal();
                 }
 
@@ -205,12 +207,12 @@ function modifyQuantity(){
 
 }
 //Calcular resultado de saida
-function calcularTotal(){
+function calcularTotal() {
     const output = document.querySelector('#output');
     let valorTotal = 0;
 
-    if(itemsBag.length > 0){
-        itemsBag.forEach(element =>{
+    if (itemsBag.length > 0) {
+        itemsBag.forEach(element => {
             valorTotal += parseFloat(element.quantidade) * parseFloat(element.preco);
         })
     }

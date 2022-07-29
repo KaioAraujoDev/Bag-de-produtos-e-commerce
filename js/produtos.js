@@ -3,7 +3,8 @@ const arrayProdutos = [
             "id":0,
             "nome": "Xiaomi Redmi Note 8",
             "preco": "760,00",
-            "image": "assets/xiami redmi note 8.jpeg"
+            "image": "assets/xiami redmi note 8.jpeg",
+            
         },
         {
             "id":1,
