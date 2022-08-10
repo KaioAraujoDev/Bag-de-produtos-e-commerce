@@ -35,7 +35,25 @@ Colocar em práticas conhecimentos de manipulação de objetos e array , aprende
 
 ## Funcionalidades
 
-A aplicação deverá armazenar os items selecionados em uma bag , remove-los e alterar a quantidade de produtos quando solicitada pelo usuário.
+### Busca de items
+
+Caso queira o usuário poderá buscar pelos items existentes na lista.
+
+### Seleção de item e armazenamento
+
+O usuário poderá escolher o item desejado e adicioná-lo na lista.
+
+### Remoção de item
+
+O usuário poderá remover o item da lista caso queira.
+
+### Alterar quantidade
+
+o usuário poderá alterar a quantidade de produtos que irá levar na lista.
+
+### Retorno de valor
+
+Dado todos os items escolhidos pelos usuários será informado a soma dos valores dos items da lista.
 
 
 
